@@ -10,4 +10,4 @@
   * -Git Graph is for visualizing your git paths
 
 * Version Control:
-
+ *Delete Untracked Files: git clean -f (for untracked files) -xdf (build artifacts, logs, or other untracked files)
