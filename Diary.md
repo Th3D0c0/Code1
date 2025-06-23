@@ -11,12 +11,10 @@
 
 * Version Control:
  *Delete Untracked Files: git clean -f (for untracked files) -xdf (build artifacts, logs, or other untracked files)  
-
-
-* Day 2 (23.06.25):  
-* HTML Questions:  
- * The first version of HTML was written by Tim Berners-Lee in 1993 to share science papers.
- * Difference between Syntax and Semantics:  
- * Syntax is about the structure of language while Semantics is about the meaning of language.  
- * The first Website was: https://info.cern.ch/hypertext/WWW/TheProject.html  
- * Simulator: https://line-mode.cern.ch
+* <ins>Day 2 (23.06.25): </ins> 
+1. HTML Questions:  
+     - The first version of HTML was written by Tim Berners-Lee in 1993 to share science papers.
+     - Difference between Syntax and Semantics:  
+     - Syntax is about the structure of language while Semantics is about the meaning of language.  
+     - The first Website was: https://info.cern.ch/hypertext/WWW/TheProject.html  
+     - Simulator: https://line-mode.cern.ch
