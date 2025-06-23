@@ -1,0 +1,5 @@
+Hello, this is a plain text file.
+
+  It respects      white space.
+
+<h1>This is not a heading</h1>
