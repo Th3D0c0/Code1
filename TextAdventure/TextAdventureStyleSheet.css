@@ -1,11 +1,18 @@
+html, body{
+    height: 100vh;
+}
+
 body {
     font-family: 'Inter', sans-serif; /* Use Inter as the default font */
     background-color: #f0f2f5; /* Light gray background for a soft look */
     color: #333; /* Dark gray text for readability */
-    padding: 2rem; /* Add some padding around the content */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: rgb(39, 129, 159)
+}
+.ImageBorder{
+    border: 5px solid black;
+
 }
