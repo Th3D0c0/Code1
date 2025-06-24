@@ -1,0 +1,22 @@
+/* --- Global Styles & Body --- */
+
+/* Import a clean, modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* Apply a natural box-sizing model to all elements */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Use Inter as the default font */
+    background-color: #f0f2f5; /* Light gray background for a soft look */
+    color: #333; /* Dark gray text for readability */
+    margin: 0;
+    padding: 2rem; /* Add some padding around the content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 700px;
+    flex-direction: column;
+}
