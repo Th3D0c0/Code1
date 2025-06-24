@@ -3,7 +3,7 @@ html, body{
 }
 
 body {
-    font-family: 'Inter', sans-serif; /* Use Inter as the default font */
+    font-family: "Dancing Script", cursive;
     background-color: #f0f2f5; /* Light gray background for a soft look */
     color: #333; /* Dark gray text for readability */
     display: flex;
@@ -11,4 +11,18 @@ body {
     align-items: center;
     flex-direction: column;
     background-color: rgb(39, 129, 159)
+}
+
+img{animation: pulse 2s infinite;}
+
+@keyframes pulse{
+    0%{
+        transform: scale(1.0)
+    }
+    50%{
+    transform: scale(1.05)
+    }
+    100%{
+        transform: scale(1)
+    }
 }
