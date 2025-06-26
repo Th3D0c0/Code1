@@ -1,22 +1,9 @@
 "use strict";
 var CodeTest;
 (function (CodeTest) {
-    {
-        let x = 2;
-        switch (x) {
-            case 1: {
-                console.log("Case 1");
-                break;
-            }
-            case 2: {
-                console.log("Equal to 2");
-                break;
-            }
-            default: {
-                console.log("Default");
-                break;
-            }
-        }
-        console.log("Ended Switch");
+    let numberInput = Number(prompt("Input number to double"));
+    function multiplyByTwo(multiplier) {
+        return multiplier * 2;
     }
+    console.log(multiplyByTwo(multiplyByTwo(numberInput)));
 })(CodeTest || (CodeTest = {}));
