@@ -1,10 +1,21 @@
+namespace CodeTest {
 
-let z0: number = 4;
-let z1: number = 7;
-let z2: number = 5;
-let z3: number = 3;
-let result: number;
-result = z0 ^ z1;
-result = result ^ z2;
-
-console.log(result)
+    {
+        let x: number = 2;
+        switch (x) {
+            case 1: {
+                console.log("Case 1");
+                break;
+            }
+            case 2: {
+                console.log("Equal to 2");
+                break;
+            }
+            default: {
+                console.log("Default");
+                break;
+            }
+        }
+        console.log("Ended Switch")
+    }
+}
