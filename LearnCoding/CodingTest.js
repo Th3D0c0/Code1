@@ -1,2 +1,4 @@
 "use strict";
-console.log("Hello World");
+let Greeting;
+Greeting = "Hello there";
+console.log(Greeting);
