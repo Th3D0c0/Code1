@@ -1,6 +1,17 @@
 html, body{
-    height: 100vh;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars on the body */
+
 }
+
+#full-screen-iframe {
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    border: none;   /* Removes the default border */
+}
+
 
 body {
     font-family: "Dancing Script", cursive;
