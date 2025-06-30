@@ -20,7 +20,6 @@ namespace CodeTest {
 
         displayState(_a, _b, _c, _d, _Player);
         let CurrentSelectedRow: number = getRow(_a, _b, _c, _d);
-
         let UpdatedLights: number = promptNumberUserInput(_a, _b, _c, _d, CurrentSelectedRow);
 
         //Change Row Values
@@ -45,6 +44,7 @@ namespace CodeTest {
 
         if(checkWinner(_a, _b, _c, _d) == true) {
             if (_Player == false){
+                console.log(_a)
                 console.log("Player 1 has won the game");
                 hasGameEnded = true;
             }
@@ -55,7 +55,6 @@ namespace CodeTest {
         }
         else{
             _Player = !_Player;
-            
             gameLoop(_a, _b, _c, _d, _Player);
         }
 
@@ -69,6 +68,7 @@ namespace CodeTest {
         CalculationResult = _a ^ _b;
         CalculationResult = CalculationResult ^ _c;
         CalculationResult = CalculationResult ^ _d;
+
         if (CalculationResult <= 0){
             winnerResult = true;
         }
@@ -111,13 +111,25 @@ namespace CodeTest {
         let result: number;
         switch(_CurrentSelectedRow){
             //Work in Progress !!!!!!!!!!!!!!!!!!!!!!
-            case 1: result = _CurrentSelectedRow - input;
+            case 1: {
+                result = _a - input
+                break;
+            }
 
-            case 2: result =_CurrentSelectedRow - input;
+            case 2: {
+                result =_b- input
+                break;
+            }
 
-            case 3: result = _CurrentSelectedRow - input;
-
-            case 4: result = _CurrentSelectedRow - input;
+            case 3: {
+                result = _c - input
+                break;
+            }
+            case 4: {
+                result = _d - input;
+                break;
+            }
+            
 
             default:  result = -1;
         }

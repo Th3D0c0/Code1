@@ -37,6 +37,7 @@ var CodeTest;
         }
         if (checkWinner(_a, _b, _c, _d) == true) {
             if (_Player == false) {
+                console.log(_a);
                 console.log("Player 1 has won the game");
                 hasGameEnded = true;
             }
@@ -100,10 +101,22 @@ var CodeTest;
         let result;
         switch (_CurrentSelectedRow) {
             //Work in Progress !!!!!!!!!!!!!!!!!!!!!!
-            case 1: result = _CurrentSelectedRow - input;
-            case 2: result = _CurrentSelectedRow - input;
-            case 3: result = _CurrentSelectedRow - input;
-            case 4: result = _CurrentSelectedRow - input;
+            case 1: {
+                result = _a - input;
+                break;
+            }
+            case 2: {
+                result = _b - input;
+                break;
+            }
+            case 3: {
+                result = _c - input;
+                break;
+            }
+            case 4: {
+                result = _d - input;
+                break;
+            }
             default: result = -1;
         }
         return result;
