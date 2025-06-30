@@ -65,11 +65,9 @@ namespace CodeTest {
         let CalculationResult: number;
         let winnerResult: boolean;
 
-        CalculationResult = _a ^ _b;
-        CalculationResult = CalculationResult ^ _c;
-        CalculationResult = CalculationResult ^ _d;
+        CalculationResult = _a + _b + _c + _d
 
-        if (CalculationResult <= 0){
+        if (CalculationResult == 0){
             winnerResult = true;
         }
         else{

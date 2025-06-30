@@ -54,10 +54,8 @@ var CodeTest;
     function checkWinner(_a, _b, _c, _d) {
         let CalculationResult;
         let winnerResult;
-        CalculationResult = _a ^ _b;
-        CalculationResult = CalculationResult ^ _c;
-        CalculationResult = CalculationResult ^ _d;
-        if (CalculationResult <= 0) {
+        CalculationResult = _a + _b + _c + _d;
+        if (CalculationResult == 0) {
             winnerResult = true;
         }
         else {
