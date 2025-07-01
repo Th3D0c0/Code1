@@ -139,7 +139,7 @@ var CodeTest;
         if (_Player == false) {
             console.log("Current Player: --Player 1-- ");
         }
-        else {
+        else if (_Player == true) {
             console.log("Current Player: --Player 2-- ");
         }
         console.log("_________________________________________________________");
