@@ -5,14 +5,14 @@ var CodeTest;
     let b;
     let c;
     let d;
-    let Player = false;
+    let player = false;
     a = Number(prompt("Fill Row 1"));
     b = Number(prompt("Fill Row 2"));
     c = Number(prompt("Fill Row 3"));
     d = Number(prompt("Fill Row 4"));
-    gameLoop(a, b, c, d, Player);
-    function gameLoop(_a, _b, _c, _d, _Player) {
-        displayState(_a, _b, _c, _d, _Player);
+    gameLoop(a, b, c, d, player);
+    function gameLoop(_a, _b, _c, _d, _player) {
+        displayState(_a, _b, _c, _d, _player);
         let CurrentSelectedRow = getRow(_a, _b, _c, _d);
         let UpdatedLights = promptNumberUserInput(_a, _b, _c, _d, CurrentSelectedRow);
         //Change Row Values
@@ -35,7 +35,7 @@ var CodeTest;
             }
         }
         if (checkWinner(_a, _b, _c, _d) == true) {
-            if (_Player == false) {
+            if (_player == false) {
                 console.log(_a);
                 console.log("Player 1 has won the game");
             }
@@ -44,9 +44,9 @@ var CodeTest;
             }
         }
         else {
-            _Player = !_Player;
-            console.log(_Player);
-            gameLoop(_a, _b, _c, _d, _Player);
+            _player = !_player;
+            console.log(_player);
+            gameLoop(_a, _b, _c, _d, _player);
         }
     }
     function checkWinner(_a, _b, _c, _d) {
@@ -92,10 +92,10 @@ var CodeTest;
         }
         return userRowSelection;
     }
-    function promptNumberUserInput(_a, _b, _c, _d, _CurrentSelectedRow) {
-        let input = (Number(prompt("How many lights to remove on line " + _CurrentSelectedRow)));
+    function promptNumberUserInput(_a, _b, _c, _d, _currentSelectedRow) {
+        let input = (Number(prompt("How many lights to remove on line " + _currentSelectedRow)));
         let result;
-        switch (_CurrentSelectedRow) {
+        switch (_currentSelectedRow) {
             //Work in Progress !!!!!!!!!!!!!!!!!!!!!!
             case 1: {
                 result = _a - input;

@@ -5,7 +5,7 @@ namespace CodeTest {
     let c: number;
     let d: number;
 
-    let Player: boolean = false;
+    let player: boolean = false;
 
     a = Number(prompt("Fill Row 1"));
     b = Number(prompt("Fill Row 2"));
@@ -13,13 +13,13 @@ namespace CodeTest {
     d = Number(prompt("Fill Row 4"));
 
      
-    gameLoop(a, b, c, d, Player);
+    gameLoop(a, b, c, d, player);
    
 
 
-    function gameLoop(_a: number, _b: number, _c: number, _d: number, _Player: boolean) {
+    function gameLoop(_a: number, _b: number, _c: number, _d: number, _player: boolean) {
         
-        displayState(_a, _b, _c, _d, _Player);
+        displayState(_a, _b, _c, _d, _player);
         let CurrentSelectedRow: number = getRow(_a, _b, _c, _d);
         let UpdatedLights: number = promptNumberUserInput(_a, _b, _c, _d, CurrentSelectedRow);
 
@@ -44,7 +44,7 @@ namespace CodeTest {
         }
 
         if(checkWinner(_a, _b, _c, _d) == true) {
-            if (_Player == false){
+            if (_player == false){
                 console.log(_a)
                 console.log("Player 1 has won the game");
                 
@@ -55,9 +55,9 @@ namespace CodeTest {
             }
         }
         else{
-            _Player = !_Player;
-            console.log(_Player);
-            gameLoop(_a, _b, _c, _d, _Player);
+            _player = !_player;
+            console.log(_player);
+            gameLoop(_a, _b, _c, _d, _player);
         }
 
     }
@@ -67,7 +67,7 @@ namespace CodeTest {
         let CalculationResult: number;
         let winnerResult: boolean;
 
-        CalculationResult = _a + _b + _c + _d
+        CalculationResult = _a + _b + _c + _d;
 
         if (CalculationResult == 0){
             winnerResult = true;
@@ -104,12 +104,10 @@ namespace CodeTest {
     }
 
 
-
-
-    function promptNumberUserInput(_a: number, _b: number, _c:number, _d:number, _CurrentSelectedRow: number): number{
-        let input: number = (Number(prompt("How many lights to remove on line " + _CurrentSelectedRow)));
+    function promptNumberUserInput(_a: number, _b: number, _c:number, _d:number, _currentSelectedRow: number): number{
+        let input: number = (Number(prompt("How many lights to remove on line " + _currentSelectedRow)));
         let result: number;
-        switch(_CurrentSelectedRow){
+        switch(_currentSelectedRow){
             //Work in Progress !!!!!!!!!!!!!!!!!!!!!!
             case 1: {
                 result = _a - input
@@ -176,9 +174,6 @@ namespace CodeTest {
         console.log("Current Row 4: "+ _d);
         console.log("_________________________________________________________");
     }
-
-
-
 
 
 }
