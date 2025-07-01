@@ -12,12 +12,13 @@ namespace CodeTest {
     c = Number(prompt("Fill Row 3"));
     d = Number(prompt("Fill Row 4"));
 
+     let hasGameEnded: boolean = false;
     gameLoop(a, b, c, d, Player);
+   
 
 
     function gameLoop(_a: number, _b: number, _c: number, _d: number, _Player: boolean) {
-        let hasGameEnded: boolean = false;
-
+        
         displayState(_a, _b, _c, _d, _Player);
         let CurrentSelectedRow: number = getRow(_a, _b, _c, _d);
         let UpdatedLights: number = promptNumberUserInput(_a, _b, _c, _d, CurrentSelectedRow);
@@ -46,11 +47,11 @@ namespace CodeTest {
             if (_Player == false){
                 console.log(_a)
                 console.log("Player 1 has won the game");
-                hasGameEnded = true;
+                
             }
             else{
                 console.log("Player 2 has won the game");
-                hasGameEnded = true;
+                
             }
         }
         else{
