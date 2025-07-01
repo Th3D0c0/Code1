@@ -136,7 +136,7 @@ var CodeTest;
         }
     }
     function displayState(_a, _b, _c, _d, _Player) {
-        if (Player == false) {
+        if (_Player == false) {
             console.log("Current Player: --Player 1-- ");
         }
         else {

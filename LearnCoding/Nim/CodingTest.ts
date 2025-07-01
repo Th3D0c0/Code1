@@ -159,7 +159,7 @@ namespace CodeTest {
 
   
     function displayState(_a: number, _b: number, _c: number, _d: number, _Player: boolean) {
-        if (Player == false) {
+        if (_Player == false) {
             console.log("Current Player: --Player 1-- ");
         }
         else {
