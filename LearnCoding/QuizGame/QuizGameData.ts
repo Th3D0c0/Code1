@@ -2,7 +2,7 @@ namespace QuizGame{
     
    export let data = {singleChoice: {question1:["Is a array a simple datatype? (true/false)", "false"],},
 
-    multipleChoice:{question1: ["Which of these Error Types is not used in computersience (1-4)" , "didactical Error"]},
+    multipleChoice:{question1: ["Which of these Error Types is not used in computersience (1-4)" , "3"]},
 
     textEntry:{question1: ["How do you write Camel Case in German?", "Binnenmajuskel"]},
 
