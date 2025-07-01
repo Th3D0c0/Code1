@@ -12,7 +12,7 @@ namespace CodeTest {
     c = Number(prompt("Fill Row 3"));
     d = Number(prompt("Fill Row 4"));
 
-     let hasGameEnded: boolean = false;
+     
     gameLoop(a, b, c, d, Player);
    
 
@@ -56,6 +56,7 @@ namespace CodeTest {
         }
         else{
             _Player = !_Player;
+            console.log(_Player);
             gameLoop(_a, _b, _c, _d, _Player);
         }
 

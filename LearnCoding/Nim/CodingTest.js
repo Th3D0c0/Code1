@@ -10,7 +10,6 @@ var CodeTest;
     b = Number(prompt("Fill Row 2"));
     c = Number(prompt("Fill Row 3"));
     d = Number(prompt("Fill Row 4"));
-    let hasGameEnded = false;
     gameLoop(a, b, c, d, Player);
     function gameLoop(_a, _b, _c, _d, _Player) {
         displayState(_a, _b, _c, _d, _Player);
@@ -46,6 +45,7 @@ var CodeTest;
         }
         else {
             _Player = !_Player;
+            console.log(_Player);
             gameLoop(_a, _b, _c, _d, _Player);
         }
     }
