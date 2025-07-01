@@ -8,9 +8,6 @@ namespace QuizGame{
 
     estimation:{question1: ["How long does a signal (in fiberoptic) take from the earth to the sun? (min:sec)", "12:30"]}}
 
-
-
-    //console.log(data["singleChoice"]["question1"][0])
 }
 
 
