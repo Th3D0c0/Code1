@@ -76,6 +76,7 @@ namespace DiceRoll{
     export function startSimulation(_currentDieData:[], _maxDieData: []){
 
         for(const key in _currentDieData){
+            console.log(numberStash);
             switch(key){    
                 case "d4": 
                 for (let i = 0; i < _currentDieData[key]; i++){
@@ -84,6 +85,8 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
+                    console.log("D4: " + localDieStorage)
+                    break;
                 }
 
                 case "d6": 
@@ -93,6 +96,7 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
+                    break;
                 }
 
                 case "d8": 
@@ -102,6 +106,7 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
+                    break;
                 }
 
                 case "d10": 
@@ -111,6 +116,7 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
+                    break;
                 }
 
                 case "d12": 
@@ -120,6 +126,7 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
+                    break;
                 }
                 
                 case "d20": 
@@ -129,6 +136,7 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
+                    break;
                 }
       
             }

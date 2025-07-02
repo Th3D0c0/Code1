@@ -64,6 +64,7 @@ var DiceRoll;
     DiceRoll.saveData = saveData;
     function startSimulation(_currentDieData, _maxDieData) {
         for (const key in _currentDieData) {
+            console.log(DiceRoll.numberStash);
             switch (key) {
                 case "d4":
                     for (let i = 0; i < _currentDieData[key]; i++) {
@@ -72,6 +73,8 @@ var DiceRoll;
                         DiceRoll.rollSum += localDieStorage;
                         //Stash the current Value
                         DiceRoll.numberStash[key].push(localDieStorage);
+                        console.log("D4: " + localDieStorage);
+                        break;
                     }
                 case "d6":
                     for (let i = 0; i < _currentDieData[key]; i++) {
@@ -80,6 +83,7 @@ var DiceRoll;
                         DiceRoll.rollSum += localDieStorage;
                         //Stash the current Value
                         DiceRoll.numberStash[key].push(localDieStorage);
+                        break;
                     }
                 case "d8":
                     for (let i = 0; i < _currentDieData[key]; i++) {
@@ -88,6 +92,7 @@ var DiceRoll;
                         DiceRoll.rollSum += localDieStorage;
                         //Stash the current Value
                         DiceRoll.numberStash[key].push(localDieStorage);
+                        break;
                     }
                 case "d10":
                     for (let i = 0; i < _currentDieData[key]; i++) {
@@ -96,6 +101,7 @@ var DiceRoll;
                         DiceRoll.rollSum += localDieStorage;
                         //Stash the current Value
                         DiceRoll.numberStash[key].push(localDieStorage);
+                        break;
                     }
                 case "d12":
                     for (let i = 0; i < _currentDieData[key]; i++) {
@@ -104,6 +110,7 @@ var DiceRoll;
                         DiceRoll.rollSum += localDieStorage;
                         //Stash the current Value
                         DiceRoll.numberStash[key].push(localDieStorage);
+                        break;
                     }
                 case "d20":
                     for (let i = 0; i < _currentDieData[key]; i++) {
@@ -112,6 +119,7 @@ var DiceRoll;
                         DiceRoll.rollSum += localDieStorage;
                         //Stash the current Value
                         DiceRoll.numberStash[key].push(localDieStorage);
+                        break;
                     }
             }
         }
