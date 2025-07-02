@@ -8,19 +8,14 @@ namespace DiceRoll{
     export let currentDieAmount: number;
 
 
-    //Global Roll Output Variables
-    export let overallSum: number = 0;
-    export let overallAverage: number = 0;
-    export let overallMax: number = 0;
-    export let overallMin: number = 0;
-    export let overalMedian: number = 0;
-
-    //Single Roll Output Variables
+    //Roll Output Variables
     export let rollSum: number = 0;
     export let rollAverage: number = 0;
-    export let rollMax: number = 0;
-    export let rollMin: number = 0;
-    export let rollMedian: number = 0;
+    export let minimal: number = Infinity; 
+    export let maximal: number = -Infinity;
+    export let Median: number = 0;
+
+
 
 
 
@@ -76,7 +71,6 @@ namespace DiceRoll{
     export function startSimulation(_currentDieData:[], _maxDieData: []){
 
         for(const key in _currentDieData){
-            console.log(numberStash);
             switch(key){    
                 case "d4": 
                 for (let i = 0; i < _currentDieData[key]; i++){
@@ -85,9 +79,9 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
-                    console.log("D4: " + localDieStorage)
-                    break;
+                    
                 }
+                break;
 
                 case "d6": 
                 for (let i = 0; i < _currentDieData[key]; i++){
@@ -96,8 +90,8 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
-                    break;
                 }
+                break;
 
                 case "d8": 
                 for (let i = 0; i < _currentDieData[key]; i++){
@@ -106,8 +100,8 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
-                    break;
-                }
+                } 
+                break;
 
                 case "d10": 
                 for (let i = 0; i < _currentDieData[key]; i++){
@@ -116,8 +110,8 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
-                    break;
                 }
+                break;
 
                 case "d12": 
                 for (let i = 0; i < _currentDieData[key]; i++){
@@ -126,8 +120,8 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
-                    break;
                 }
+                break;
                 
                 case "d20": 
                 for (let i = 0; i < _currentDieData[key]; i++){
@@ -136,32 +130,70 @@ namespace DiceRoll{
                     rollSum += localDieStorage
                     //Stash the current Value
                     numberStash[key].push(localDieStorage);
-                    break;
                 }
+                break;
       
             }
         }
-        //Calculate Average 
 
+
+        //Calculate the number of dice rolls
+        let amountOfEntries: number = 0;
         for (const key in numberStash) {
-        // Get the array for the current key, e.g., numberStash["d4"]
-        const currentArray = numberStash[key];
-        
-        // Get the number of entries using the .length property
-        const amountOfEntries = currentArray.length;
-        console.log(`The number of rolls for ${key} is: ${amountOfEntries}`);
+            // Get the array for the current key
+            const currentArray = numberStash[key];
+            // Get the number of entries using .length
+            amountOfEntries += currentArray.length;
         }
+        //calculate the average
+        rollAverage = rollSum / amountOfEntries
 
 
+        //calculating minimal and maximal value
+        for(const key in numberStash){
+            for(let i: number = 0; i < numberStash[key].length; i++){
+                let currentRoll: number = numberStash[key][i]
 
-        rollAverage = rollSum / numberStash["d4"]
+                if(currentRoll > maximal){
+                    maximal = currentRoll;
+                }
+
+                if(currentRoll < minimal){
+                    minimal = currentRoll;
+                }
+            }
+        }
+    
+
+        //Calculate the Median
+        Median = (minimal + maximal) / 2;
+
+        //Show Result
+        showResults();
 
     }
 
 
+    export function showResults(): any{
+        console.log(donkeyArt);
+        console.log(`
+        +---------------------------------+
+        |         ROLLING RESULTS         |
+        +---------------------------------+
+        | Total Sum:       | ${rollSum.toString().padEnd(14)} |
+        | Average Roll:    | ${rollAverage.toFixed(2).toString().padEnd(14)} |
+        | Minimal Roll:    | ${minimal.toString().padEnd(14)} |
+        | Maximal Roll:    | ${maximal.toString().padEnd(14)} |
+        | Median Roll:     | ${Median.toString().padEnd(14)} |
+        +---------------------------------+
+        `);
+        console.log("Individual rolls:", numberStash);
+    }
+
+    
     export function getRandomInt(_min: number, _max: number) {
-  return Math.floor(Math.random() * (_max - _min + 1) + _min);
-}
+        return Math.floor(Math.random() * (_max - _min + 1) + _min);
+    }
 
 
 
