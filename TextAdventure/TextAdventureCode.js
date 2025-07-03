@@ -39,3 +39,4 @@ var TextAdventure;
         }
     }
 })(TextAdventure || (TextAdventure = {}));
+//# sourceMappingURL=TextAdventureCode.js.map
