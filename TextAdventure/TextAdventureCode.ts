@@ -3,10 +3,12 @@ namespace TextAdventure {
     declare var parent: Parent;
     let currentLevel = location.href;
 
+    let bossImage = document.getElementById("BossImg") as HTMLImageElement;
     let bossText = document.body.getElementsByTagName("div")[1]
     let bossTextParent = document.body.getElementsByTagName("div")[0]
     let changedBossText = document.body.getElementsByTagName("div")[0]
-
+    //let currentBossImg = ;
+    //let newBossImg = ;
 
 
     //Check if current Level is Boss Level
@@ -20,7 +22,7 @@ namespace TextAdventure {
             bossTextParent.removeChild(bossText);
             changedBossText.innerText = "The boss is already Dead"
             bossTextParent.appendChild(changedBossText)
- 
+            bossImage.src = "Images/DeadBoss.png"; 
         }
     }
 
