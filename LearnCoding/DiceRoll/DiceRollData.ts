@@ -16,9 +16,6 @@ namespace DiceRoll{
     export let Median: number = 0;
 
 
-
-
-
     //Functions
     export function selectDieType(): string{
 

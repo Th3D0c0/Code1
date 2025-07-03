@@ -2,27 +2,21 @@ namespace DiceRoll{
 
  
 
-selectionLoop()
+    selectionLoop()
 
 
 
 
-function selectionLoop():void {
+    function selectionLoop():void {
     
-    let DieType: string = selectDieType();
-    if(DieType != "0"){
-        saveData(DieType ,selectionDieAmount(DieType))
-        selectionLoop();
+     let DieType: string = selectDieType();
+     if(DieType != "0"){
+         saveData(DieType ,selectionDieAmount(DieType))
+          selectionLoop();
+      }
+      else{
+         startSimulation(currentDieData, maxDieData);
+      }
     }
-    else{
-        startSimulation(currentDieData, maxDieData);
-    }
-    
-
-}
-
-
-
-
     
 }
