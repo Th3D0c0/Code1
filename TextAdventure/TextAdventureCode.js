@@ -2,9 +2,12 @@
 var TextAdventure;
 (function (TextAdventure) {
     let currentLevel = location.href;
+    let bossImage = document.getElementById("BossImg");
     let bossText = document.body.getElementsByTagName("div")[1];
     let bossTextParent = document.body.getElementsByTagName("div")[0];
     let changedBossText = document.body.getElementsByTagName("div")[0];
+    //let currentBossImg = ;
+    //let newBossImg = ;
     //Check if current Level is Boss Level
     if (currentLevel.endsWith("Boss_Level.html")) {
         console.log(parent.hasEnteredBossRoom == true);
@@ -15,6 +18,7 @@ var TextAdventure;
             bossTextParent.removeChild(bossText);
             changedBossText.innerText = "The boss is already Dead";
             bossTextParent.appendChild(changedBossText);
+            bossImage.src = "Images/DeadBoss.png";
         }
     }
     if (currentLevel.endsWith("Level3_1.html")) {
