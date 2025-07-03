@@ -12,7 +12,7 @@ var DiceRoll;
     DiceRoll.Median = 0;
     //Functions
     function selectDieType() {
-        let userInput = parseInt(prompt("What Die to choose: (1):D4, (2):D6, (3):D8, (4):D10, (5):D12, (6): D20, (0): Start Simulation") || "-1");
+        let userInput = parseInt(prompt("What Die to choose: (1):D4, (2):D6, (3):D8, (4):D10, (5):D12, (6): D20, (0): Continue") || "-1");
         let userDiceDecition = "0";
         switch (userInput) {
             case -1: {
@@ -56,64 +56,19 @@ var DiceRoll;
         DiceRoll.currentDieData[_dieType] += _dieAmount;
     }
     DiceRoll.saveData = saveData;
+    function sumValues(_currentDieData, _maxDieData, _dieType, _rollAmount) {
+        for (let i = 0; i < _currentDieData[_dieType]; i++) {
+            let localDieStorage = getRandomInt(1, DiceRoll.maxDieData[_dieType]);
+            //Sum up Values
+            DiceRoll.rollSum += localDieStorage;
+            //Stash the current Value
+            DiceRoll.numberStash[_dieType].push(localDieStorage);
+        }
+    }
+    DiceRoll.sumValues = sumValues;
     function startSimulation(_currentDieData, _maxDieData) {
         for (const key in _currentDieData) {
-            switch (key) {
-                case "d4":
-                    for (let i = 0; i < _currentDieData[key]; i++) {
-                        let localDieStorage = getRandomInt(1, 4);
-                        //Sum up Values
-                        DiceRoll.rollSum += localDieStorage;
-                        //Stash the current Value
-                        DiceRoll.numberStash[key].push(localDieStorage);
-                    }
-                    break;
-                case "d6":
-                    for (let i = 0; i < _currentDieData[key]; i++) {
-                        let localDieStorage = getRandomInt(1, 6);
-                        //Sum up Values
-                        DiceRoll.rollSum += localDieStorage;
-                        //Stash the current Value
-                        DiceRoll.numberStash[key].push(localDieStorage);
-                    }
-                    break;
-                case "d8":
-                    for (let i = 0; i < _currentDieData[key]; i++) {
-                        let localDieStorage = getRandomInt(1, 8);
-                        //Sum up Values
-                        DiceRoll.rollSum += localDieStorage;
-                        //Stash the current Value
-                        DiceRoll.numberStash[key].push(localDieStorage);
-                    }
-                    break;
-                case "d10":
-                    for (let i = 0; i < _currentDieData[key]; i++) {
-                        let localDieStorage = getRandomInt(1, 10);
-                        //Sum up Values
-                        DiceRoll.rollSum += localDieStorage;
-                        //Stash the current Value
-                        DiceRoll.numberStash[key].push(localDieStorage);
-                    }
-                    break;
-                case "d12":
-                    for (let i = 0; i < _currentDieData[key]; i++) {
-                        let localDieStorage = getRandomInt(1, 12);
-                        //Sum up Values
-                        DiceRoll.rollSum += localDieStorage;
-                        //Stash the current Value
-                        DiceRoll.numberStash[key].push(localDieStorage);
-                    }
-                    break;
-                case "d20":
-                    for (let i = 0; i < _currentDieData[key]; i++) {
-                        let localDieStorage = getRandomInt(1, 20);
-                        //Sum up Values
-                        DiceRoll.rollSum += localDieStorage;
-                        //Stash the current Value
-                        DiceRoll.numberStash[key].push(localDieStorage);
-                    }
-                    break;
-            }
+            sumValues(_currentDieData, _maxDieData, key, _maxDieData[key]);
         }
         //Calculate the number of dice rolls
         let amountOfEntries = 0;
@@ -139,8 +94,6 @@ var DiceRoll;
         }
         //Calculate the Median
         DiceRoll.Median = (DiceRoll.minimal + DiceRoll.maximal) / 2;
-        //Show Result
-        showResults();
     }
     DiceRoll.startSimulation = startSimulation;
     function showResults() {
@@ -163,6 +116,15 @@ var DiceRoll;
         return Math.floor(Math.random() * (_max - _min + 1) + _min);
     }
     DiceRoll.getRandomInt = getRandomInt;
+    function selectRollAmount() {
+        let globalRollAmount = Number(prompt("How many Rolls do you want"));
+        for (let i = 0; i < globalRollAmount; i++) {
+            startSimulation(DiceRoll.currentDieData, DiceRoll.maxDieData);
+        }
+        //Show Result
+        showResults();
+    }
+    DiceRoll.selectRollAmount = selectRollAmount;
     DiceRoll.donkeyArt = `######################################################################################
 #                                                                                    # 
 #                            ,.--------._                                            #

@@ -11,11 +11,12 @@ namespace DiceRoll{
     
      let DieType: string = selectDieType();
      if(DieType != "0"){
-         saveData(DieType ,selectionDieAmount(DieType))
-          selectionLoop();
+        saveData(DieType ,selectionDieAmount(DieType))
+        selectionLoop();
       }
       else{
-         startSimulation(currentDieData, maxDieData);
+        selectRollAmount();
+
       }
     }
     

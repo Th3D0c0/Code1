@@ -9,7 +9,7 @@ var DiceRoll;
             selectionLoop();
         }
         else {
-            DiceRoll.startSimulation(DiceRoll.currentDieData, DiceRoll.maxDieData);
+            DiceRoll.selectRollAmount();
         }
     }
 })(DiceRoll || (DiceRoll = {}));
