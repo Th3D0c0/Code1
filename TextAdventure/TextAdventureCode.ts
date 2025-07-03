@@ -3,24 +3,24 @@ namespace TextAdventure {
     declare var parent: Parent;
     let currentLevel = location.href;
 
-    let bossText: any = document.body.getElementsByTagName("div")[1]
-    let bossTextParent: any = document.body.getElementsByTagName("div")[0]
+    let bossText = document.body.getElementsByTagName("div")[1]
+    let bossTextParent = document.body.getElementsByTagName("div")[0]
+    let changedBossText = document.body.getElementsByTagName("div")[0]
 
-    console.log(bossTextParent);
-    console.log("Has Entered Boss Room?:" + parent.hasEnteredBossRoom)
-    console.log("Has Key: " + parent.hasKey);
-    console.log(parent.hasSword);
+
 
     //Check if current Level is Boss Level
     if (currentLevel.endsWith("Boss_Level.html")) {
         console.log(parent.hasEnteredBossRoom == true)
         if (parent.hasEnteredBossRoom === undefined) {
             parent.hasEnteredBossRoom = true;
-            console.log(parent.hasEnteredBossRoom)
+  
         }
         else if(parent.hasEnteredBossRoom == true){
             bossTextParent.removeChild(bossText);
-            console.log("TEST TRUE")
+            changedBossText.innerText = "The boss is already Dead"
+            bossTextParent.appendChild(changedBossText)
+ 
         }
     }
 
@@ -31,6 +31,7 @@ namespace TextAdventure {
             parent.hasSword = true;
         }
     }
+
 
     if (currentLevel.endsWith("DefeatedBoss.html")) {
         if (parent.hasSword == false) {
