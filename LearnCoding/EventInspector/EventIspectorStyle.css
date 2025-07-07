@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+#container {
+    /* These properties were moved from the body */
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+    /* Set height to fill most of the screen below the h1 */
+    height: 90vh;
+}
+
+span{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 200px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white; 
+    border: 1px solid black; 
+}
+
+#div0, #div1 {
+    width: 45%; 
+    height: 90%; 
+    background-color: aqua;
+    display: flex;
+}
+
+#div1 {
+    background-color: lightcoral;
+}
+
+#container {
+    /* These properties arrange the divs side-by-side and centered */
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+    /* This ensures the container takes up most of the vertical space */
+    height: 90vh;
+}
