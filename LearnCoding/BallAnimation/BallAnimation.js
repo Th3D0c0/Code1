@@ -5,32 +5,43 @@ var BallAnimation;
         width: window.innerWidth,
         height: window.innerHeight
     };
-    console.log("Width: " + world["width"]);
-    let startPositionX = 50;
-    let startPositionY = 50;
-    let currentPositionX = startPositionX;
-    let currentPositionY = startPositionY;
-    let velocityX = 5;
-    let velocityY = 5;
-    let ballRadius = 20;
-    setLoctaion();
+    let startPosition = { x: 50, y: 50 };
+    let currentPosition = startPosition;
+    let Velocity = { x: 3, y: 3 };
+    let ballRadius = 80;
+    let numberOfBalls = 100;
+    let balls = [];
+    window.addEventListener("load", handleLoad);
+    function handleLoad() {
+        for (let i = 0; i < numberOfBalls; i++) {
+            const ball = {
+                element: document.createElement("img"),
+                currentPositionX: startPosition.x,
+                currentPositionY: startPosition.x,
+                VelocityX: Velocity.x,
+                VelocityY: Velocity.y
+            };
+            document.body.appendChild(ball.element);
+            balls.push(ball);
+        }
+        setLoctaion();
+    }
     //Function ----------------
     function setLoctaion() {
-        const span = document.getElementById("span");
-        if (!span) {
-            return;
-        }
+        for (const ball of balls) 
         //Update Location
-        currentPositionX += velocityX;
-        currentPositionY += velocityY;
-        span.style.left = (currentPositionX) + "px";
-        span.style.top = (currentPositionY) + "px";
-        //Check for Corners
-        if (currentPositionX <= 0 || currentPositionX >= world.width - ballRadius) {
-            velocityX *= -1;
-        }
-        if (currentPositionY <= 0 || currentPositionY >= world.height - ballRadius) {
-            velocityY *= -1;
+        {
+            currentPosition.x += Velocity.x;
+            currentPosition.y += Velocity.y;
+            ball.element.style.left = (currentPosition.x) + "px";
+            ball.element.style.top = (currentPosition.y) + "px";
+            //Check for Corners
+            if (currentPosition.x <= 0 || currentPosition.x >= world.width - ballRadius) {
+                Velocity.x *= -1;
+            }
+            if (currentPosition.y <= 0 || currentPosition.y >= world.height - ballRadius) {
+                Velocity.y *= -1;
+            }
         }
         requestAnimationFrame(setLoctaion);
     }

@@ -3,45 +3,62 @@ namespace BallAnimation{
         width: window.innerWidth,
         height: window.innerHeight
     };
-    console.log("Width: " + world["width"])
+    type Vector2 = {x: number, y: number};
 
-    let startPositionX: number = 50;
-    let startPositionY: number =50;
+    let startPosition: Vector2 = {x: 50, y:50}
+    let currentPosition: Vector2 = startPosition;
+    let Velocity: Vector2 = {x: 3, y: 3}
+    let ballRadius = 80;
+    let numberOfBalls: number = 100
 
-    let currentPositionX: number = startPositionX;
-    let currentPositionY: number = startPositionY;
-    let velocityX: number = 5;
-    let velocityY: number = 5;
+        type Ball = {
+        element:HTMLElement,
+        currentPositionX: number,
+        currentPositionY: number,
+        VelocityX: number,
+        VelocityY:number,
+    }
 
-    let ballRadius = 20;
+    let balls: Ball[] = [];
 
-    setLoctaion();
+    window.addEventListener("load", handleLoad)
+    function handleLoad(){
+        for(let i: number = 0; i < numberOfBalls; i++)
+        {   
+            const ball:Ball = {
+            element: document.createElement("img") as HTMLElement,
+            currentPositionX: startPosition.x,
+            currentPositionY: startPosition.x,
+            VelocityX: Velocity.x,
+            VelocityY: Velocity.y
+            };
+            document.body.appendChild(ball.element)
+            balls.push(ball)
+        }
+        setLoctaion();
+    }
 
-
-
-    
     //Function ----------------
-    function setLoctaion():any{
-    const span = document.getElementById("span");
+    function setLoctaion():void{
 
-    if(!span){
-        return;
-    }
+        for(const ball of balls)
+        //Update Location
+        {        
+        currentPosition.x += Velocity.x;
+        currentPosition.y += Velocity.y;
+        ball.element.style.left = (currentPosition.x) + "px";
+        ball.element.style.top = (currentPosition.y) + "px";
 
-    //Update Location
-    currentPositionX += velocityX;
-    currentPositionY += velocityY;
-    span.style.left = (currentPositionX) + "px";
-    span.style.top = (currentPositionY) + "px";
+        //Check for Corners
+        if(currentPosition.x <= 0 || currentPosition.x >= world.width - ballRadius){
+            Velocity.x *= -1;
+        }
+        if(currentPosition.y <= 0 || currentPosition.y >= world.height - ballRadius){
+            Velocity.y *= -1;
+        }
+        }
 
-    //Check for Corners
-    if(currentPositionX <= 0 || currentPositionX >= world.width - ballRadius){
-        velocityX *= -1;
-    }
-    if(currentPositionY <= 0 || currentPositionY >= world.height - ballRadius){
-        velocityY *= -1;
-    }
 
-    requestAnimationFrame(setLoctaion);
+        requestAnimationFrame(setLoctaion);
     }
 }

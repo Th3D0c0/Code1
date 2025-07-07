@@ -1,11 +1,11 @@
 
 #span{
-    position: absolute;
-    background-color: aqua;
+    position: fixed;
+    background-color: rgba(0, 255, 255, 0);
     border-radius: 50%;
     width: 1px;
     height: 1px;
-    transform: matrix(20,0,0,20,0,0);
+    transform: matrix(50,0,0,50,0,0);
 }
 
 html, body {margin: 0px; padding: 0px; height: 100%; overflow: hidden}
