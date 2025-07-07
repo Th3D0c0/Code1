@@ -1,6 +1,6 @@
-function getCommand(_state: {}): any{
+// function getCommand(_state: {}): any{
 
-return {"module": ,"method": ,"data":}
-}
+// return {"module": ,"method": ,"data":}
+// }
 
     
