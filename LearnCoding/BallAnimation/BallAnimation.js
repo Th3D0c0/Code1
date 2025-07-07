@@ -8,23 +8,15 @@ var BallAnimation;
     console.log("Width: " + world["width"]);
     let startPositionX = 50;
     let startPositionY = 50;
+    let currentPositionX = startPositionX;
+    let currentPositionY = startPositionY;
     let velocityX = 5;
     let velocityY = 5;
-    let ballRadius = 25;
-    // let maxGenerations = 100;
-    const parentBody = document.body;
-    function spawnChild() {
-        const child = document.createElement("span");
-        parentBody.appendChild(child);
-        setLoctaion(child);
-        console.log("tick");
-    }
-    setInterval(spawnChild, 500);
+    let ballRadius = 20;
+    setLoctaion();
     //Function ----------------
-    function setLoctaion(_span) {
-        const span = _span;
-        let currentPositionX = startPositionX;
-        let currentPositionY = startPositionY;
+    function setLoctaion() {
+        const span = document.getElementById("span");
         if (!span) {
             return;
         }
@@ -40,7 +32,7 @@ var BallAnimation;
         if (currentPositionY <= 0 || currentPositionY >= world.height - ballRadius) {
             velocityY *= -1;
         }
-        requestAnimationFrame(setLoctaion(_span));
+        requestAnimationFrame(setLoctaion);
     }
 })(BallAnimation || (BallAnimation = {}));
 //# sourceMappingURL=BallAnimation.js.map
