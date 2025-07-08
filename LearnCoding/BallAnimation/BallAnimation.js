@@ -5,9 +5,11 @@ var BallAnimation;
         width: window.innerWidth,
         height: window.innerHeight
     };
+    let startTime = Date.now();
+    // let gravitationalRadius: number = 100;
     // The diameter of the ball, should match the CSS width/height
     const ballDiameter = 50;
-    const numberOfBalls = 10;
+    const numberOfBalls = 100;
     let balls = [];
     let timePreviousFrame = Date.now();
     window.addEventListener("load", handleLoad);
@@ -67,17 +69,24 @@ var BallAnimation;
         // Get the position and dimensions of the black hole relative to the viewport
         const rect = blackHoleRef.getBoundingClientRect();
         // Calculate the center point of the black hole
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+        const blackHoleCenterX = rect.left + rect.width / 2;
+        const blackHoleCenterY = rect.top + rect.height / 2;
         // Use the calculated center coordinates to find elements at that point
-        const elementsAtPoint = document.elementsFromPoint(centerX, centerY);
+        const elementsAtPoint = document.elementsFromPoint(blackHoleCenterX, blackHoleCenterY);
         for (let element of elementsAtPoint) {
             if (element.tagName === "SPAN") {
                 let targetParent = element.parentElement;
                 targetParent?.removeChild(element);
             }
         }
-        // This will now correctly include any span elements at the black hole's center.
+        for (let ball of balls) {
+            ball = gravitationCalc(blackHoleCenterX, blackHoleCenterY, ball);
+            ball.element.style.left += ball.position.x + "px";
+            ball.element.style.top += ball.position.y + "px";
+        }
+        if ((timeCurrentFrame - startTime) > 1000) {
+            checkCollisionAll();
+        }
         requestAnimationFrame(updateAnimation);
     }
     function getRandomInt(_min, _max) {
@@ -96,6 +105,49 @@ var BallAnimation;
             newSpan.className = "ball";
             document.body.appendChild(newSpan);
             balls.push({ element: newSpan, position: { x: _event.screenX - 10, y: _event.screenY - 125 }, velocity: { x: getRandomInt(-500, 500), y: getRandomInt(-500, 500) } });
+        }
+    }
+    function gravitationCalc(_blackHoleCenterX, _blackHoleCenterY, _ball, gravitationalConstant = 10 // Adjust this for desired strength
+    ) {
+        // 1. Calculate the vector from the ball to the black hole
+        const dx = _blackHoleCenterX - _ball.position.x;
+        const dy = _blackHoleCenterY - _ball.position.y;
+        // 2. Calculate the distance using the Pythagorean theorem
+        const distanceSq = (dx * dx + dy * dy) * 0.01;
+        const distance = Math.sqrt(distanceSq);
+        // Avoid division by zero and extreme forces when the ball is too close
+        if (distance < 1) {
+            return _ball;
+        }
+        // 3. Calculate the force magnitude using the inverse square law
+        // F = G * (m1 * m2) / r^2
+        // We'll simplify by rolling G and masses into a single gravitationalConstant
+        const forceMagnitude = gravitationalConstant / distanceSq;
+        // 4. Calculate the normalized direction vector (a unit vector)
+        const directionX = dx / distance;
+        const directionY = dy / distance;
+        // 5. Calculate the acceleration vector by applying the force to the direction
+        const accelerationX = directionX * forceMagnitude;
+        const accelerationY = directionY * forceMagnitude;
+        // 6. Apply the acceleration to the ball's velocity
+        _ball.velocity.x += accelerationX * 15;
+        _ball.velocity.y += accelerationY * 15;
+        return _ball;
+    }
+    function checkCollisionAll() {
+        let collisionDistance = { x: 0, y: 0 };
+        for (const a in balls) {
+            for (let b = Number(a) + 1; b < balls.length; b++) {
+                collisionDistance.x = balls[a].position.x - balls[b].position.x;
+                collisionDistance.y = balls[a].position.y - balls[b].position.y;
+                let distance = Math.sqrt(collisionDistance.x * collisionDistance.x + collisionDistance.y * collisionDistance.y);
+                if (distance <= ballDiameter && distance <= ballDiameter) {
+                    balls[a].velocity.x *= -1;
+                    balls[a].velocity.y *= -1;
+                    balls[b].velocity.x *= -1;
+                    balls[b].velocity.y *= -1;
+                }
+            }
         }
     }
 })(BallAnimation || (BallAnimation = {}));
