@@ -26,7 +26,7 @@ namespace BallAnimation{
         for(let i: number = 0; i < numberOfBalls; i++)
         {   
             const ball:Ball = {
-            element: document.createElement("img") as HTMLElement,
+            element: document.createElement("span") as HTMLElement,
             currentPositionX: startPosition.x,
             currentPositionY: startPosition.x,
             VelocityX: Velocity.x,
