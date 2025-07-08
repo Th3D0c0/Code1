@@ -9,7 +9,7 @@ var BallAnimation;
     // let gravitationalRadius: number = 100;
     // The diameter of the ball, should match the CSS width/height
     const ballDiameter = 50;
-    const numberOfBalls = 100;
+    const numberOfBalls = 10;
     let balls = [];
     let timePreviousFrame = Date.now();
     window.addEventListener("load", handleLoad);

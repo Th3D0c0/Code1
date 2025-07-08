@@ -12,7 +12,7 @@ namespace BallAnimation {
 
     // The diameter of the ball, should match the CSS width/height
     const ballDiameter = 50;
-    const numberOfBalls: number = 100;
+    const numberOfBalls: number = 10;
 
     // The type for a single ball, now with its own position and velocity
     type Ball = {
