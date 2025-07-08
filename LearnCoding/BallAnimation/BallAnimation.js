@@ -8,7 +8,7 @@ var BallAnimation;
     let startTime = Date.now();
     // let gravitationalRadius: number = 100;
     // The diameter of the ball, should match the CSS width/height
-    const ballDiameter = 50;
+    const ballDiameter = 25;
     const numberOfBalls = 10;
     let balls = [];
     let timePreviousFrame = Date.now();
@@ -141,7 +141,7 @@ var BallAnimation;
                 collisionDistance.x = balls[a].position.x - balls[b].position.x;
                 collisionDistance.y = balls[a].position.y - balls[b].position.y;
                 let distance = Math.sqrt(collisionDistance.x * collisionDistance.x + collisionDistance.y * collisionDistance.y);
-                if (distance <= ballDiameter && distance <= ballDiameter) {
+                if (distance <= ballDiameter) {
                     balls[a].velocity.x *= -1;
                     balls[a].velocity.y *= -1;
                     balls[b].velocity.x *= -1;

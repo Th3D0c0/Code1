@@ -11,7 +11,7 @@ namespace BallAnimation {
 
 
     // The diameter of the ball, should match the CSS width/height
-    const ballDiameter = 50;
+    const ballDiameter = 25;
     const numberOfBalls: number = 10;
 
     // The type for a single ball, now with its own position and velocity
@@ -188,11 +188,11 @@ namespace BallAnimation {
         let collisionDistance: Vector2 = {x: 0, y:0};
         for(const a in balls){
             for(let b: number = Number(a) +1; b < balls.length; b++){
-                collisionDistance.x = balls[a].position.x - balls[b].position.x
+                collisionDistance.x = balls[a].position.x - balls[b].position.x 
                 collisionDistance.y = balls[a].position.y - balls[b].position.y
-
                 let distance: number = Math.sqrt(collisionDistance.x * collisionDistance.x + collisionDistance.y * collisionDistance.y)
-                if(distance <= ballDiameter && distance <= ballDiameter){
+                
+                if(distance <= ballDiameter){
                     balls[a].velocity.x *= -1;
                     balls[a].velocity.y *= -1;
                     balls[b].velocity.x *= -1;
