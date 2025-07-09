@@ -45,6 +45,9 @@ var CarControl;
         else if (keys["s"]) {
             tank.velocity = -100;
         }
+        if (!keys["w"] && !keys["s"]) {
+            tank.velocity = 0;
+        }
     }
     // function isKeyDown(_key: string) {
     // }

@@ -75,6 +75,10 @@ namespace CarControl {
         else if (keys["s"]) {
             tank.velocity = -100;
         }
+        
+        if (!keys["w"] && !keys["s"]){
+            tank.velocity = 0;
+        }
 
         }
     
