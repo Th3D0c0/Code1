@@ -1,24 +1,58 @@
 "use strict";
 var CarControl;
 (function (CarControl) {
+    let timePreviousFrame = 0;
+    const keys = {};
     let tank;
     window.addEventListener("load", handleLoad);
-    window.addEventListener("keydown", moveCar);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
     function handleLoad() {
         tank = {
-            element: document.createElement("SPAN"),
+            element: document.createElement("span"),
             position: { x: 100, y: 100 },
-            velocity: { x: 0, y: 0 },
+            velocity: 0,
             rotation: 0
         };
-        updateloop();
+        document.body.appendChild(tank.element);
+        document.addEventListener("mousemove", handleMouseMove);
+        updateloop(0);
     }
-    function updateloop() {
-        moveCar();
+    function handleKeyDown(_event) {
+        keys[_event.key] = true;
+    }
+    function handleKeyUp(_event) {
+        keys[_event.key] = false;
+    }
+    //Handle Mouse Movement
+    function handleMouseMove(_event) {
+        tank.rotation += _event.movementX;
+    }
+    //Updating the main Loop
+    function updateloop(_time) {
+        let timeDelta;
+        timeDelta = _time - timePreviousFrame;
+        timeDelta /= 1000;
+        processInput();
+        RotateCar(timeDelta);
+        timePreviousFrame = _time;
         requestAnimationFrame(updateloop);
     }
-    function moveCar() {
-        tank.rotation += 1;
+    function processInput() {
+        if (keys["w"]) {
+            tank.velocity = 100;
+        }
+        else if (keys["s"]) {
+            tank.velocity = -100;
+        }
+    }
+    // function isKeyDown(_key: string) {
+    // }
+    //Rotating the car
+    function RotateCar(_timeDelta) {
+        const radians = Math.PI * tank.rotation / 180;
+        tank.position.x += tank.velocity * Math.cos(radians) * _timeDelta;
+        tank.position.y += tank.velocity * Math.sin(radians) * _timeDelta;
         const matrix = createMatrix(tank.position, tank.rotation, { x: 40, y: 20 });
         tank.element.style.transform = matrix;
     }
