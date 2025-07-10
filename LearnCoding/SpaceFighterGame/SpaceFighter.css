@@ -1,0 +1,12 @@
+#spaceShip {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+}
+
+#cannon {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    transform-origin: 50% 85%;
+}

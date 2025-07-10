@@ -15,7 +15,7 @@ namespace QuizGame {
     alert("You have won the game!");
 
 
-    function checkQuestion(_rightAnswer: string, _answer: string, _question: string) {
+    function checkQuestion(_rightAnswer: string, _answer: string, _question: string):void {
 
         if (_rightAnswer.toLowerCase() === _answer.toLowerCase()) {
             alert("Correct");

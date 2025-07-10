@@ -55,7 +55,7 @@ namespace CodeTest {
             }
         }
         else{
-            _player = !_player;
+            player = !_player;
             console.log(_player);
             gameLoop(_a, _b, _c, _d, _player);
         }
@@ -64,12 +64,11 @@ namespace CodeTest {
 
 
     function checkWinner(_a: number, _b: number, _c: number, _d: number,): boolean{
-        let CalculationResult: number;
+        const calculationResult: number = _a + _b + _c + _d;
         let winnerResult: boolean;
 
-        CalculationResult = _a + _b + _c + _d;
 
-        if (CalculationResult == 0){
+        if (calculationResult == 0){
             winnerResult = true;
         }
         else{
